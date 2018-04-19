@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      .login_link {
+        text-align: right;
+      }
+      .card {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Doctors Available</h1>
+    </div>
+    <hr>
+    <br>
+      <div class="login_link">
+        <a href="/login">Doctor Login</a>
+      </div>
+    <div class="container">
+      <div class="card">
+        <% for(let i = 0; i < doctor.length; i++){ %>
+            <div>
+              <%= doctor[i].name %>
+            </div>
+           <img src="<%= doctor[i].img_url %>" alt="">
+           <div>
+             <button type="submit">Book</button>
+           </div>
+        <% } %>
+      </div>
+
+    </div>
+  </body>
+</html>

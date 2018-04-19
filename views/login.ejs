@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      .container{
+       text-align: center;
+       margin: 100px;
+      },
+      .password {
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <form class="" action="/login" method="post">
+        <input type="text" name="email" placeholder="Email">
+        <div class="password">
+          <input type="password" name="password" placeholder="password">
+        </div>
+      <button type="submit">Login</button>
+      </form>
+      <hr>
+      <div class="container">
+        <h1>Register</h1>
+        <form class="" action="/register" method="post">
+          <div>
+            <input type="text" name="name" placeholder="Name">
+          </div>
+          <div>
+            <input type="text" name="email" placeholder="Email">
+          </div>
+          <div>
+            <input type="text" name="bio" placeholder="Bio">
+          </div>
+          <div>
+            <input type="text" name="img_url" placeholder="Image Link">
+          </div>
+          <div class="password">
+            <input type="password" name="password" placeholder="password">
+          </div>
+        <button type="submit">Register</button>
+        </form>
+
+    </div>
+  </body>
+</html>

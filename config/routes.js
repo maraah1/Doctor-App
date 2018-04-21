@@ -21,11 +21,11 @@ module.exports = function(app) {
   app.get('/edit/:id', edit.getEdit)
   app.post('/edit/:id', edit.update)
   app.get('/complete/:id', buttons.complete)
-  // app.get('/confirm/:id', buttons.confirm)
-  // app.get('/delete/:id', buttons.delete)
+  app.get('/confirm/:id', buttons.confirm)
+  app.get('/delete/:id', buttons.delete)
   app.post('/complete/:id', buttons.completePost)
-  // app.post('/confirm/:id', buttons.confirmPost)
-  // app.post('/delete/:id', buttons.deletePost)
+  app.post('/confirm/:id', buttons.confirmPost)
+  app.post('/delete/:id', buttons.deletePost)
 
 }
 

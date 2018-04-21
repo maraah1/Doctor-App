@@ -11,11 +11,28 @@
     <h4><%= appointment.details %></h4>
 <hr>
 <br>
-<form class="" action="/update/<%= appointment.id %>" method="post">
-  <button type="submit" id="completed" onclick="buttonControl('completed')">Mark as Completed</button>
-  <button type="submit" id="confirm" onclick="buttonControl('confirmed')">Confirm Appointment</button>
-  <button type="submit" id="delete" onclick="buttonControl('unconfirmed')">Delete Appointment</button>
-</form>
+
+
+  <form class="" action="/complete/<%= appointment.id %>" method="post">
+    <button type="submit" id="completed" onclick="buttonControl('completed')">Mark as Completed</button>
+  </form>
+
+  <form class="" action="/confirm/<%= appointment.id %>" method="post">
+    <button type="submit" id="confirm" onclick="buttonControl('confirmed')">Confirm Appointment</button>
+  </form>
+
+  <form class="" action="/delete/<%= appointment.id %>" method="post">
+    <button type="submit" id="delete" onclick="buttonControl('unconfirmed')">Delete Appointment</button>
+  </form>
+
+
+
+
+
+
+
+
+
      <h1>Notes:</h1>
   <% for(let i = 0; i < notes.length; i++) { %>
     <div class="notes">
@@ -29,20 +46,9 @@
    <div class="">
      <button type="submit">Submit</button>
    </div>
+
 <script>
-  function buttonControl(id) {
-    let complete = document.getElementById('completed');
-    let confirm = document.getElementById('confirm');
-    let deleted = document.getElementById('delete');
-    complete.style.display = "none";
-    confirm.style.display = "none";
-    deleted.style.display = "none";
-    if(appointment.status == "completed")  {
-      complete.style.display = "block";
-    } else if(appointment.status == "unconfirmed") {
-      confirm.style.display = "block"
-    }
-  }
+
 </script>
 
   </form>

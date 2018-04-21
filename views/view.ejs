@@ -2,54 +2,84 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <style>
+      .center {
+        text-align: center;
+      },
+      .buttons {
+        border: solid bold
+      }
+    </style>
   </head>
   <body>
-    <a href="/edit/<%= appointment.id %>">Edit</a>
-    <h1><%= appointment.name %></h1>
-    <h2><%= appointment.reason %></h2>
-    <h4><%= appointment.details %></h4>
+
+  <a href="/edit/<%= appointment.id %>">Edit</a>
+
+    <div class="center">
+      <h1><%= appointment.name %></h1>
+      <h2><%= appointment.reason %></h2>
+      <h4><%= appointment.details %></h4>
+    </div>
+
 <hr>
 <br>
 
 
-  <form class="" action="/complete/<%= appointment.id %>" method="post">
+  <form class="center buttons" action="/complete/<%= appointment.id %>" method="post">
     <button type="submit" id="completed" onclick="buttonControl('completed')">Mark as Completed</button>
   </form>
 
-  <form class="" action="/confirm/<%= appointment.id %>" method="post">
+  <form class="center buttons" action="/confirm/<%= appointment.id %>" method="post">
     <button type="submit" id="confirm" onclick="buttonControl('confirmed')">Confirm Appointment</button>
   </form>
 
-  <form class="" action="/delete/<%= appointment.id %>" method="post">
-    <button type="submit" id="delete" onclick="buttonControl('unconfirmed')">Delete Appointment</button>
+  <form class="center buttons" action="/delete/<%= appointment.id %>" method="post">
+    <button type="submit" id="deleted"  onclick="buttonControl('unconfirmed')">Delete Appointment</button>
   </form>
 
 
-
-
-
-
-
-
-
-     <h1>Notes:</h1>
+     <h1 class="center">Notes:</h1>
   <% for(let i = 0; i < notes.length; i++) { %>
-    <div class="notes">
+    <div class="notes center">
       <%= notes[i].note %>
     </div>
      <% console.log("notes:", notes[i].note) %>
 <%  } %>
+
+
  <br>
-   <form class="" action="/appointments/<%= appointment.id%>" method="post">
+   <form class="center" action="/appointments/<%= appointment.id%>" method="post">
    <textarea name="note" rows="8" cols="80" placeholder="Enter a new Note"></textarea>
-   <div class="">
-     <button type="submit">Submit</button>
+   <div class="center">
+     <button class="buttons" type="submit" >Submit</button>
    </div>
 
-<script>
 
-</script>
+
+  <% if(appointment.status == "completed"){ %>
+  <style>
+    #confirm, #completed {
+      display: none;
+    }
+  </style>
+  <% } %>
+
+  <% if(appointment.status == "confirmed"){ %>
+  <style>
+    #deleted, #confirm {
+      display: none;
+    }
+  </style>
+  <% } %>
+
+  <% if(appointment.status == "unconfirmed"){ %>
+  <style>
+    #deleted, #completed {
+      display: none;
+    }
+  </style>
+  <% } %>
+
 
   </form>
   </body>

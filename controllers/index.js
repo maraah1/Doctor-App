@@ -4,9 +4,15 @@ module.exports = {
 
   doctorsList: (req, res) => {
     knex('doctor').then((doctor) => {
-      res.render('docPage', {
-        doctor
-      })
+      knex('appointment')
+        .where('id', req.session.user_id)
+        .then((appointment) => {
+          res.render('docPage', {
+            doctor,
+            appointment
+          })
+        })
+
     })
   },
 
@@ -28,7 +34,7 @@ module.exports = {
         if (user.password === req.body.password) {
           req.session.user_id = user.id
           req.session.save(() => {
-            res.redirect('/secondPage')
+            res.redirect('/appointments')
           });
         } else {
           res.redirect('/');

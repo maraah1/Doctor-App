@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <%= doctor.name %>
+    <form class="" action="/book/<%= doctor.id %>"  method="post">
+      
+      <input type="text" name="name" placeholder="Name">
+      <input type="text" name="date" placeholder="Date">
+      <input type="text" name="reason" placeholder="Reason">
+      <input type="text" name="details" placeholder="Details">
+      <button type="submit">Submit</button>
+    </form>
+
+  </body>
+</html>

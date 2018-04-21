@@ -9,9 +9,9 @@ module.exports = {
         .then((appResults) => {
           console.log(appResults);
           console.log(results);
-          res.render('secondPage', {
+          res.render('appointments', {
             doctor: results[0],
-            appointment: appResults[0]
+            appointment: appResults
           })
         })
     })

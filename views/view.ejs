@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/edit/<%= appointment.id %>">Edit</a>
+    <h1><%= appointment.name %></h1>
+    <h2><%= appointment.reason %></h2>
+    <h4><%= appointment.details %></h4>
+<hr>
+<br>
+<form class="" action="/update/<%= appointment.id %>" method="post">
+  <button type="submit" id="completed" onclick="buttonControl('completed')">Mark as Completed</button>
+  <button type="submit" id="confirm" onclick="buttonControl('confirmed')">Confirm Appointment</button>
+  <button type="submit" id="delete" onclick="buttonControl('unconfirmed')">Delete Appointment</button>
+</form>
+     <h1>Notes:</h1>
+  <% for(let i = 0; i < notes.length; i++) { %>
+    <div class="notes">
+      <%= notes[i].note %>
+    </div>
+     <% console.log("notes:", notes[i].note) %>
+<%  } %>
+ <br>
+   <form class="" action="/appointments/<%= appointment.id%>" method="post">
+   <textarea name="note" rows="8" cols="80" placeholder="Enter a new Note"></textarea>
+   <div class="">
+     <button type="submit">Submit</button>
+   </div>
+<script>
+  function buttonControl(id) {
+    let complete = document.getElementById('completed');
+    let confirm = document.getElementById('confirm');
+    let deleted = document.getElementById('delete');
+    complete.style.display = "none";
+    confirm.style.display = "none";
+    deleted.style.display = "none";
+    if(appointment.status == "completed")  {
+      complete.style.display = "block";
+    } else if(appointment.status == "unconfirmed") {
+      confirm.style.display = "block"
+    }
+  }
+</script>
+
+  </form>
+  </body>
+</html>

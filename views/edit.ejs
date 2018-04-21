@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="updateForm" action="/edit/<%= appointment.id %>" method="post">
+      <input type="text" name="name" value="<%= appointment.name %>">
+      <input type="text" name="date" value="<%= appointment.date %>">
+      <input type="text" name="reason" value="<%= appointment.reason %>">
+      <input type="text" name="details" value="<%= appointment.details %>">
+      <button type="submit">Update</button>
+    </form>
+  </body>
+</html>

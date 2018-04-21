@@ -29,7 +29,10 @@
             </div>
            <img src="<%= doctor[i].img_url %>" alt="">
            <div>
-             <button type="submit">Book</button>
+             <form class="" action="/book/<%= doctor[i].id %>">
+               
+               <button type="submit">Book</button>
+             </form>
            </div>
         <% } %>
       </div>

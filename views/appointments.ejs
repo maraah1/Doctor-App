@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .card{
+        text-align: left;
+        background-color: lightgrey;
+        height: 30px;
+      }
+      .date{
+        text-align: right;
+      }
+    </style>
+
+  </head>
+  <body>
+    <h1>Welcome <%= doctor.name %></h1>
+
+    <div class="selectionButtons">
+
+      <button class="tablinks" id="defaultOpen" onclick="function1(event, 'confirmed')">Confirmed Appointments</button>
+      <button class="tablinks" onclick="function1(event, 'unconfirmed')">Unconfirmed Appointments</button>
+      <button class="tablinks" onclick="function1(event, 'completed')">Completed Appointments</button>
+
+    </div>
+    <hr>
+    <br>
+    <% for (let i = 0; i < appointment.length; i++) { %>
+      <% if(appointment[i].status == "confirmed") { %>
+          <div id="confirmed" class="appointments card" >
+            <%= appointment[i].name %>
+            <div class="card">
+              <%= appointment[i].reason %>
+            <div class="card date">
+              <%= appointment[i].date %>
+            </div>
+          </div>
+            <div class="card">
+              <%= appointment[i].details %>
+            </div>
+            <form class="card" action="/appointments/<%= appointment[i].id%>">
+              <button type="submit">View</button>
+            </form>
+          </div>
+        <% } else if(appointment[i].status == "unconfirmed") {%>
+            <div id="unconfirmed" class="appointments card">
+              <%= appointment[i].name %>
+              <div class="card">
+                <%= appointment[i].reason %>
+              <div class="card date">
+                <%= appointment[i].date %>
+              </div>
+            </div>
+              <div class="card">
+                <%= appointment[i].details %>
+              </div>
+              <form class="card" action="/appointments/<%= appointment[i].id%>">
+                <button type="submit">View</button>
+              </form>
+            </div>
+        <% } else { %>
+            <div id="completed" class="appointments card">
+              <%= appointment[i].name %>
+              <div class="card">
+                <%= appointment[i].reason %>
+              <div class="card date">
+                <%= appointment[i].date %>
+              </div>
+            </div>
+              <div class="card">
+                <%= appointment[i].details %>
+              </div>
+              <form class="card" action="/appointments/<%= appointment[i].id%>">
+                <button type="submit">View</button>
+              </form>
+            </div>
+        <% } %>
+     <% } %>
+
+    <script>
+
+     function function1(evt, appointmentid) {
+      let appointments = document.getElementsByClassName('appointments');
+
+           for (i = 0; i < appointments.length; i++) {
+             appointments[i].style.display = "none";
+             console.log('appointments:', appointments[i]);
+            if(appointments[i].style.diplay == "block") {
+              appointments[i].style.display = "none"
+
+             }
+             document.getElementById(appointmentid).style.display = "block";
+             evt.currentTarget.className += " active";
+            }
+
+
+     }
+     document.getElementById("defaultOpen").click()
+
+    </script>
+  </body>
+</html>

@@ -3,6 +3,8 @@ const knex = require("../db/knex.js");
 module.exports = {
 
   doctorsList: (req, res) => {
+    if(!req.session.user_id)
+      res.redirect('/login')
     knex('doctor').then((doctor) => {
       knex('appointment')
         .where('id', req.session.user_id)
